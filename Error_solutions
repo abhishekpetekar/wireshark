@@ -1,0 +1,28 @@
+error 1:
+Setting up wireshark for non root user
+
+$USER is here to see as a shell variable. 
+The third command above adds your user to the wireshark group and should be replaced by sudo adduser <yourUser> wireshark.
+Now you should be able to invoke wireshark as yourself (no need to sudo anymore).
+
+error 2:
+How To Apply Wireshark Patch
+
+
+Problem solved. All I did was to To Install Wireshark 1.12.0 by following the directions in the link below:
+
+http://linuxg.net/how-to-install-wireshark-1-12-0-on-ubuntu-14-04-linux-mint-17-elementary-os-0-3-deepin-2014-and-other-ubuntu-14-04-derivatives/
+
+The new wireshark version is already patched
+
+First of all, i uninstalled the previous wireshark and its dependencies with the autoremove. This "MAY" not be necessary.
+
+
+error 3:
+
+How to enable Wireshark without running as root in Trusty 14.04
+
+I found that after the lasted 
+sudo apt-get update; 
+sudo apt-get dist-upgrade and then sudo dpkg-reconfigure wireshark-common that a wireshark group been created in /etc/gshadow. 
+So I just wrote: gpasswd -a USERNAME wireshark and reboot and now it works fine!
